@@ -1,0 +1,115 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+ 
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" lang="es-es">
+
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+ <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<title>Editor de Texto H.M </title>
+<style>
+#textBox {
+width: 800px;
+height: 600px;
+border: 2px #000000 solid;
+padding: 10px;
+overflow: scroll;
+background-color: white;
+}
+</style>
+</head>
+
+
+<body>
+    
+
+    <div id="texto">
+    
+        <iframe name="corpo" id="corpo" contenteditable="true"></iframe>
+    
+    </div>
+    <br>
+       <div>
+       <h1>Editor de Texto</h1>
+   </div>
+    
+<div id="menu" >
+   
+  <ul>
+
+    
+       <li> 
+           <select name="fonts" id="fonts" onchange="changeFont(this.value)">
+            <option value="fantasy">Fantasy</option>
+            <option value="monospace">Monospace</option>
+            <option value="sans-serif">Sans-Serif</option>
+            <option value="Constantia">Constantia</option>
+            <option value="Berlin Sans FB Demi">Berlin Sans FB Demi</option>
+              <option value="serif">Serif</option>
+            <option value="Segoe IU">Segoe IU</option>
+            <option value="Consolas">Consolas</option>
+            <option value="oblique">Oblique</option>
+            </select>
+        <li><input title="Tamaño de letra" type="number" value="3" name="tamanho" id="tamanho" max="25" min="0" onchange="changeSize(this.value)"></li>
+        </li>
+        <li title=""><label for="bold"><i id="bold" class="fa fa-bold"></i></label></li>
+        <li title=""><label for="italic"><i id="italic" class="fa fa-italic"></i></label></li>
+        <li title=""><label for="underline"><i id="underline" class="fa fa-underline"></i></label></li>
+
+
+
+        
+        <li title="Guardar"><label for="guardar"><i id="download-btn"
+             class="fa fa-floppy-o ">Guardar</i></label></li>
+       
+
+
+
+       <li ><label for="linea"><i id="linea"  class="fa fa-bars " > Cambiar linea</i></label></li>
+        <li ><label for="nolinea"><i id="nolinea"  class="fa fa-reply-all " > Desacer linea</i></label></li>
+        <li><input type="color" name="" id="color" onchange="changeColor(this.value)"></li>
+        <li title="Imprimir"><label for="print"><i id="print" class="fa fa-print ">Imprimir</i></label></li>
+            </ul>   
+</div>
+
+
+
+
+
+
+
+
+<script src="script.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.4.1/jspdf.debug.js" 
+    integrity="sha384-THVO/sM0mFD9h7dfSndI6TS0PgAGavwKvB5hAxRRvc0o9cPLohB0wb/PTA7LdUHs"
+     crossorigin="anonymous"></script>
+
+
+
+    <script src="FileSaver.min.js"></script>
+<script>
+    document.getElementById("download-btn").addEventListener("click",function(){
+var text= document.getElementById("texto").value;
+
+
+var blob = new Blob([text], {
+    type: "text/plain;charset=utf-8"
+
+
+    });
+    saveAs (blob);
+}, false);
+
+</script>
+
+
+
+</body>
+
+</html>
